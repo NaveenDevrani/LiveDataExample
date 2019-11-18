@@ -2,6 +2,7 @@ package com.devcoder.livedataexample;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DiffUtil;
@@ -29,11 +30,14 @@ public class MainActivity extends AppCompatActivity {
     private FavouritesViewModel mFavViewModel;
     private List<Favourites> mFav;
     FloatingActionButton fab;
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         fab = findViewById(R.id.fab);
         final RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

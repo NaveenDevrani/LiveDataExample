@@ -1,4 +1,4 @@
-package com.devcoder.livedataexample;
+package com.devcoder.livedataexample.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -24,5 +24,4 @@ public class FavouritesDBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + DbSettings.DBEntry.TABLE);
         onCreate(db);
     }
-
 }

@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.devcoder.livedataexample.database.DbSettings;
+import com.devcoder.livedataexample.database.FavouritesDBHelper;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,12 +19,12 @@ public class FavouritesViewModel extends AndroidViewModel {
     private FavouritesDBHelper mFavHelper;
     private MutableLiveData<List<Favourites>> mFavs;
 
-    FavouritesViewModel(Application application) {
+   public FavouritesViewModel(Application application) {
         super(application);
         mFavHelper = new FavouritesDBHelper(application);
     }
 
-    public MutableLiveData<List<Favourites>> getFavs() {
+    MutableLiveData<List<Favourites>> getFavs() {
         if (mFavs == null) {
             mFavs = new MutableLiveData<>();
             loadFavs();
@@ -53,7 +56,7 @@ public class FavouritesViewModel extends AndroidViewModel {
     }
 
 
-    public void addFav(String url, long date) {
+    void addFav(String url, long date) {
 
         SQLiteDatabase db = mFavHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -83,7 +86,7 @@ public class FavouritesViewModel extends AndroidViewModel {
         mFavs.setValue(clonedFavs);
     }
 
-    public void removeFav(long id) {
+    void removeFav(long id) {
         SQLiteDatabase db = mFavHelper.getWritableDatabase();
         db.delete(
                 DbSettings.DBEntry.TABLE,
@@ -110,5 +113,4 @@ public class FavouritesViewModel extends AndroidViewModel {
         }
         mFavs.setValue(clonedFavs);
     }
-
 }

@@ -1,4 +1,4 @@
-package com.devcoder.livedataexample;
+package com.devcoder.livedataexample.database;
 
 import android.provider.BaseColumns;
 
